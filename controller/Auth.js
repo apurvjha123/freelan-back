@@ -54,16 +54,7 @@ exports.loginUser = async (req, res) => {
 
 exports.logout = async (req, res) => {
   
-  await User.findByIdAndUpdate(
-    req.user.id,
-    {
-        $set : {
-            jwt : undefined
-        }
-    },{
-        new : true
-    }
-)
+
   return res
     .cookie('jwt', null, {
       expires: new Date(Date.now()),
